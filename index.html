@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="dashboard-container">
+        <!-- Header -->
         <header class="header">
             <div class="logo-area">
                 <h1>WorkSense</h1>
@@ -15,64 +16,146 @@
             </div>
         </header>
 
+        <!-- Tabs Navigation -->
         <nav class="tabs-nav">
-            <button class="tab-btn active">Overview</button>
-            <button class="tab-btn">Trends</button>
-            <button class="tab-btn">History</button>
-            <button class="tab-btn">Methods</button>
+            <button class="tab-btn active" data-target="overview">Overview</button>
+            <button class="tab-btn" data-target="trends">Trends</button>
+            <button class="tab-btn" data-target="history">History</button>
+            <button class="tab-btn" data-target="methods">Methods</button>
         </nav>
 
         <main class="main-content">
-            <section class="filters">
-                <div class="filter-group">
-                    <label>Worker ID</label>
-                    <select>
-                        <option value="W-001">W-001</option>
-                        <option value="W-002">W-002</option>
-                        <option value="W-003">W-003</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>Time Window</label>
-                    <select><option>Last 30 minutes</option>
-                    <option value="1h">Last 1 hour</option>
-                    <option value="all">All data</option>
-                </select>
-                </div>
-            </section>
+            
+            <!-- 1. Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <section class="filters">
+                    <div class="filter-group">
+                        <label>Worker ID</label>
+                        <select>
+                            <option value="W-001">W-001</option>
+                            <option value="W-002">W-002</option>
+                            <option value="W-003">W-003</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Time Window</label>
+                        <select>
+                            <option value="30m">Last 30 minutes</option>
+                            <option value="1h">Last 1 hour</option>
+                            <option value="all">All data</option>
+                        </select>
+                    </div>
+                </section>
+                
+                <section class="data-cards">
+                    <div class="card">
+                        <div class="card-header"><h3>HEART RATE</h3> <span>❤️</span></div>
+                        <div class="value">82 <span>BPM</span></div>
+                        <p class="subtitle">Latest demo reading</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h3>TEMPERATURE</h3> <span>🌡️</span></div>
+                        <div class="value">24.5 <span>°C</span></div>
+                        <p class="subtitle">Ambient temperature</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h3>HUMIDITY</h3> <span>💧</span></div>
+                        <div class="value">48 <span>%</span></div>
+                        <p class="subtitle">Relative humidity</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h3>FATIGUE SCORE</h3> <span>⏱️</span></div>
+                        <div class="value">N/A</div>
+                        <p class="subtitle">Calculation pending</p>
+                    </div>
+                </section>
+            </div>
 
-            <section class="data-cards">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>HEART RATE</h3> <span>❤️</span>
-                    </div>
-                    <div class="value">82 <span>BPM</span></div>
-                    <p class="subtitle">Latest reading</p>
+            <!-- 2. Trends Tab -->
+            <div id="trends" class="tab-content">
+                <div class="chart-header">
+                    <h2>Measurement Trends</h2>
+                    <span class="demo-tag">Demo</span>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>TEMPERATURE</h3> <span>🌡️</span>
-                    </div>
-                    <div class="value">24.5 <span>°C</span></div>
-                    <p class="subtitle">Ambient temperature</p>
+                
+                <!-- Chart Filters -->
+                <div class="chart-filters">
+                    <button class="chart-btn active" data-metric="hr">Heart Rate</button>
+                    <button class="chart-btn" data-metric="temp">Temp.</button>
+                    <button class="chart-btn" data-metric="hum">Humidity</button>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>HUMIDITY</h3> <span>💧</span>
-                    </div>
-                    <div class="value">48 <span>%</span></div>
-                    <p class="subtitle">Relative humidity</p>
+
+                <!-- Chart Canvas -->
+                <div class="chart-container" style="position: relative; height: 250px; width: 100%;">
+                    <canvas id="trendChart"></canvas>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>FATIGUE SCORE</h3> <span>⏱️</span>
-                    </div>
-                    <div class="value">N/A</div>
-                    <p class="subtitle">Calculation pending</p>
+                
+                <p style="text-align: center; font-size: 0.75rem; color: #555; margin-top: 15px;">
+                    Illustrative sensor measurements - not live
+                </p>
+            </div>
+
+            <!-- 3. History Tab -->
+            <div id="history" class="tab-content">
+                <div class="table-header">
+                    <h2>Recorded Measurements — Demo</h2> <!--[cite: 1] -->
                 </div>
-            </section>
+                
+                <div class="table-responsive">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th> 
+                                <th>BPM</th> 
+                                <th>°C</th> 
+                                <th>RH %</th> 
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <!-- Mock Data -->
+                            <tr><td>10:30</td><td>82</td><td>24.5</td><td>48</td></tr> <!--[cite: 1] -->
+                            <tr><td>10:25</td><td>86</td><td>24.5</td><td>49</td></tr> <!--[cite: 1] -->
+                            <tr><td>10:20</td><td>84</td><td>24.4</td><td>48</td></tr> <!--[cite: 1] -->
+                            <tr><td>10:15</td><td>77</td><td>24.3</td><td>48</td></tr> <!--[cite: 1] -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 4. Methods Tab -->
+            <div id="methods" class="tab-content">
+                <div class="methods-header">
+                    <h2>Methods & Limitations</h2>
+                </div>
+                
+                <div class="methods-body">
+                    <div class="method-section">
+                        <h3>Measurement Methods</h3>
+                        <p>Heart rate and HRV are measured in BPM using a physiological sensor. Ambient temperature and relative humidity are measured using environmental sensors.</p>
+                    </div>
+                    
+                    <div class="method-section">
+                        <h3>Combined Fatigue Score (CFS)</h3>
+                        <p>The CFS is a prototype index (0-100) combining physiological and environmental indicators to represent the observed workload. <em>Calculation method pending industrial engineering validation.</em></p>
+                    </div>
+                    
+                    <div class="method-section">
+                        <h3>Validation Plan</h3>
+                        <p>Compare readings against reference instruments, verify data transmission, and evaluate dashboard.</p>
+                    </div>
+                </div>
+            </div>
 
         </main>
     </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
 </body>
 </html>

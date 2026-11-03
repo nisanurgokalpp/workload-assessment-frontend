@@ -1,3 +1,4 @@
+/* --- GLOBAL RESET & BASE STYLES --- */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +20,7 @@ body {
     background-color: #000000;
 }
 
-/* Üst Bilgi */
+/* --- HEADER --- */
 .header {
     display: flex;
     justify-content: space-between;
@@ -46,7 +47,7 @@ body {
     color: #e0e0e0;
 }
 
-/* Sekmeler */
+/* --- TABS NAVIGATION --- */
 .tabs-nav {
     display: flex;
     gap: 10px;
@@ -73,7 +74,7 @@ body {
     border-color: #ffffff;
 }
 
-/* Filtreler */
+/* --- FILTERS --- */
 .filters {
     display: flex;
     gap: 15px;
@@ -103,10 +104,10 @@ body {
     cursor: pointer;
 }
 
-/* Veri Kartları */
+/* --- DATA CARDS --- */
 .data-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Yan yana 2 kutu */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 15px;
 }
 
@@ -145,4 +146,134 @@ body {
 .subtitle {
     font-size: 0.8rem;
     color: #777777;
+}
+
+/* --- TAB CONTENT --- */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* --- CHART SECTION --- */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.chart-header h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.demo-tag {
+    background-color: #333;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    color: #a0a0a0;
+}
+
+.chart-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.chart-btn {
+    background-color: #000000;
+    border: 1px solid #333;
+    color: #a0a0a0;
+    padding: 6px 14px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.chart-btn.active {
+    background-color: #333;
+    color: #ffffff;
+    border-color: #555;
+}
+
+/* --- HISTORY SECTION --- */
+.table-header {
+    margin-bottom: 15px;
+}
+
+.table-header h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.table-responsive {
+    overflow-x: auto; 
+    background-color: #1c1c1e;
+    border-radius: 12px;
+    padding: 10px 15px;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.history-table th {
+    color: #a0a0a0;
+    font-size: 0.85rem;
+    font-weight: normal;
+    padding: 12px 5px;
+    border-bottom: 1px solid #333;
+}
+
+.history-table td {
+    padding: 12px 5px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #2a2a2c;
+}
+
+.history-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- METHODS SECTION --- */
+.methods-header {
+    margin-bottom: 20px;
+}
+
+.methods-header h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.method-section {
+    background-color: #1c1c1e;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.method-section h3 {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.method-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+.method-section em {
+    color: #888;
+    font-size: 0.85rem;
 }
