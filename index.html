@@ -13,9 +13,6 @@
                 <h1>WorkSense</h1>
                 <p>Physical Workload Assessment</p>
             </div>
-            <div class="demo-badge">
-                <span>⚗️ Demo Mode</span>
-            </div>
         </header>
 
         <nav class="tabs-nav">
@@ -29,11 +26,18 @@
             <section class="filters">
                 <div class="filter-group">
                     <label>Worker ID</label>
-                    <select><option>W-001</option></select>
+                    <select>
+                        <option value="W-001">W-001</option>
+                        <option value="W-002">W-002</option>
+                        <option value="W-003">W-003</option>
+                    </select>
                 </div>
                 <div class="filter-group">
                     <label>Time Window</label>
-                    <select><option>Last 30 minutes</option></select>
+                    <select><option>Last 30 minutes</option>
+                    <option value="1h">Last 1 hour</option>
+                    <option value="all">All data</option>
+                </select>
                 </div>
             </section>
 
@@ -43,7 +47,7 @@
                         <h3>HEART RATE</h3> <span>❤️</span>
                     </div>
                     <div class="value">82 <span>BPM</span></div>
-                    <p class="subtitle">Latest demo reading</p>
+                    <p class="subtitle">Latest reading</p>
                 </div>
                 <div class="card">
                     <div class="card-header">
